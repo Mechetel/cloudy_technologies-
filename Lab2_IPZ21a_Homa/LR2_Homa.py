@@ -2,16 +2,31 @@ def print_matrix(M):
   for r in M:
     print(r)
 
-Z = [[0, 1, 2, 3, 4, 5],
-     [6, 0, 1, 2, 3, 4],
-     [7, 5, 0, 1, 2, 3],
-     [8, 6, 7, 0, 1, 2],
-     [9, 7, 8, 9, 0, 1],
-     [0, 8, 7, 9, 6, 0]]
+sign = lambda a: (a>0) - (a<0) #-1 if negative, 1 if positive
+
+X = [[-10, 0, 9, 0],
+     [0, 0, 0, 0],
+     [0, 1, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 2]]
+
+Y = [[10, 0, -9, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 8]]   
+
+Z = [[0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0]]  
+print(Z)
+
+for i in range(len(Z)):
+  for j in range(len(Z[0])):
+    Z[i][j] = abs(X[i][j]) + abs(Y[i][j])
+    if sign(X[i][j]) != sign(Y[i][j]):
+      Z[i][j] *= -1
+
 print_matrix(Z)
-print("\n")
-
-result = [[Z[j][i] for j in range(len(Z))] for i in range(len(Z[0]))]
-
-print_matrix(result)
-print("\n")
